@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace LowVisibility {
+namespace IRBT14MadlibsFix {
     public class Logger {
 
         private static StreamWriter LogStream;

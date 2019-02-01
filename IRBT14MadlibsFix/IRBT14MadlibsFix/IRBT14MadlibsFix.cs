@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Reflection;
 
-namespace LowVisibility {
+namespace IRBT14MadlibsFix {
     public class IRBT14MadlibsFix {
 
         public const string HarmonyPackage = "us.frostraptor.IRBT14MadlibsFix";

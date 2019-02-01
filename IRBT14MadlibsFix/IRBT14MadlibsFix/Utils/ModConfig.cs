@@ -1,5 +1,5 @@
 ﻿
-namespace LowVisibility {
+namespace IRBT14MadlibsFix {
     public class ModConfig {      
     }
 }
