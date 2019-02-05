@@ -29,7 +29,7 @@ namespace IRBT14MadlibsFix {
 
             Logger = new Logger(modDirectory, "irbt14madlibsfix");
             Logger.Log($"ModDir is:{modDirectory}");
-            Logger.Log($"mod.json settings are:({settingsJSON})");
+            Logger.Log($"mod.json settings are:({settingsJSON})"); 
             Logger.Log($"mergedConfig is:{IRBT14MadlibsFix.Config}");
 
             var harmony = HarmonyInstance.Create(HarmonyPackage);

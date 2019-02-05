@@ -80,11 +80,15 @@ namespace IRBT14MadlibsFix.Patches {
 
         public static bool Prefix(LanceOverride __instance, Contract contract, LanceDef lanceDef) {            
             if (contract != null) {
-                // Setup CurrentTeam before running the madlibs
-                TeamOverride teamOverride = LanceOverride_RunMadLibs.teamOverrides[__instance.GetHashCode()];
-                IRBT14MadlibsFix.Logger.Log($"LO:RMLOLD using teamOverride:[{teamOverride.GetHashCode()}] for lanceOverride:[{__instance?.GetHashCode()}]");
+                if (LanceOverride_RunMadLibs.teamOverrides.ContainsKey(__instance.GetHashCode())) {
+                    // Setup CurrentTeam before running the madlibs
+                    TeamOverride teamOverride = LanceOverride_RunMadLibs.teamOverrides[__instance.GetHashCode()];
+                    IRBT14MadlibsFix.Logger.Log($"LO:RMLOLD using teamOverride:[{teamOverride.GetHashCode()}] for lanceOverride:[{__instance?.GetHashCode()}]");
+                    contract.GameContext.SetObject(GameContextObjectTagEnum.CurrentTeam, teamOverride);
+                } else {
+                    IRBT14MadlibsFix.Logger.Log($"LO:RMLOLD COULD NOT LOAD teamOverride using lanceOverride:[{__instance.GetHashCode()}]! MadLibs may break!");
+                }
 
-                contract.GameContext.SetObject(GameContextObjectTagEnum.CurrentTeam, teamOverride);
                 contract.RunMadLib(lanceDef.LanceTags);
 
                 foreach (LanceDef.Unit unit in lanceDef.LanceUnits) {
